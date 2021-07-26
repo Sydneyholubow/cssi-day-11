@@ -24,6 +24,11 @@ window.onLoad = () => {
         firebase.database().ref(`/users/${googleUser.uid}`).push({
             title: noteTitle,
             text: noteText
+        }).then(() => {
+            console.log("database write successful")
+            document.querySelector("#noteTitle").value = " "
+            document.querySelector("#noteText").value = " "
+
         }).catch(error => {
             console.log("error writing new note: ", error)
         })
